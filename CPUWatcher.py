@@ -9,14 +9,9 @@ notification.notify(
 )
 
 while True:
-
     l1 = psutil.cpu_percent()
-    if l1 > 90.0:
-        with open("Watcher/data/past_causes.txt", "a+") as f:
-            f.write(f'{l1}\n')
-            f.close()
-        notification.notify(
+    notification.notify(
             title = "Watcher",
-            message = f"Your PC Is Overloading With CPU Takeup {l1}%"
-        )
+            message = f"Your PC Is Overloading With CPU Takeup {l1}%, close some apps"
+    )
     time.sleep(.01)
