@@ -1,5 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import os, psutil
 
 window = Tk()
@@ -25,6 +27,12 @@ def CFV():
 def DisplayMemory():
     return messagebox.showinfo('PC Tools', f'Your Current Memory usage is {str(psutil.virtual_memory()[2])}%')
 
+def CC():
+    try:
+        os.system("control update")
+    except:
+        return messagebox.showinfo('PC Tools', "Your PC is at its latest version!")
+
 # All The Actions
 Lb = Label(window, text="PC Tools", font=("Times New Roman", 25), bg='#121212',fg='white')
 Lb.place(x=180, y=30)
@@ -40,6 +48,9 @@ MemoryDisplays.place(x=187,y=200)
 
 VirusChecker = Button(window, text="Virus Detector", font=('Times New Roman', 11), bg="#121212", fg='white', bd=0, command=CFV)
 VirusChecker.place(x=192, y=250)
+
+ClearCache = Button(window, text="Update PC", font=('Times New Roman', 11), bg="#121212", fg="white", bd=0, command=CC)
+ClearCache.place(x=203, y=300)
 
 window.configure(bg='#323232')
 window.geometry("500x750")
